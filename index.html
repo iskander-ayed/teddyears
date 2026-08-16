@@ -6,201 +6,488 @@
 <title>TeddYEars — Jardin d'enfants trilingue, La Marsa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --caramel:#C48A4F;
-    --caramel-fonce:#8A5E2E;
-    --creme:#F6E9D2;
-    --creme-carte:#FFFCF6;
-    --marsa-bleu:#1B6CA8;
-    --marsa-bleu-fonce:#0F4D80;
-    --marsa-ciel:#EAF3FA;
-    --encre:#3A2E20;
-    --encre-douce:#6B5B45;
-    --radius:16px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'Nunito',sans-serif;
-    background-color:var(--creme);
-    background-image: url("images/background.jpg");
-    background-repeat:repeat;
-    color:var(--encre);
-    line-height:1.6;
-  }
-  h1,h2,h3{font-family:'Fredoka',sans-serif;font-weight:600;}
-  a{color:inherit;}
-  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
-
-  /* HEADER */
-  header{
-    background:var(--creme-carte);
-    background-image: url("images/background.jpg");
-    border-bottom:3px solid var(--marsa-bleu);
-    position:sticky;top:0;z-index:10;
-  }
-  .header-inner{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 24px;max-width:960px;margin:0 auto;flex-wrap:wrap;gap:12px;
-  }
-  .logo{display:flex;align-items:center;gap:10px;}
-  .logo-badge{
-    width:46px;height:46px;border-radius:50%;
-    background:var(--caramel);flex-shrink:0;
-    border:3px solid var(--marsa-bleu);
-    overflow:hidden;
-  }
-  .logo-badge img{
-    width:100%;height:100%;object-fit:cover;object-position:30% 20%;
-    display:block;
-  }
-  .logo-text{font-family:'Fredoka';font-weight:700;font-size:22px;color:var(--caramel-fonce);}
-  .nav-wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
-  nav{display:flex;gap:20px;flex-wrap:wrap;}
-  nav a{
-    font-weight:700;font-size:14px;text-decoration:none;color:var(--encre-douce);
-    padding:6px 2px;border-bottom:2px solid transparent;
-  }
-  nav a:hover{border-bottom-color:var(--marsa-bleu);color:var(--marsa-bleu-fonce);}
-  #lang-toggle{
-    font-family:'Fredoka';font-weight:600;font-size:13px;
-    background:var(--marsa-bleu);color:#fff;border:none;
-    padding:8px 16px;border-radius:999px;cursor:pointer;
-    transition:background 0.15s ease;
-  }
-  #lang-toggle:hover{background:var(--marsa-bleu-fonce);}
-
-  /* HERO */
-  .hero{
-    padding:0 0 0;text-align:center;
-    background:linear-gradient(180deg, var(--creme) 0%, var(--creme) 70%, var(--marsa-ciel) 100%);
-    overflow:hidden;
-  }
-  .hero-inner{
-    display:grid;grid-template-columns:280px 1fr;align-items:center;gap:12px;
-    max-width:960px;margin:0 auto;padding:0 24px;
-  }
-  .hero-bear{
-    width:100%;max-width:280px;justify-self:start;
-    display:block;
-  }
-  .hero-texte{text-align:left;padding:40px 0;}
-  .hero .langues{
-    display:flex;gap:8px;justify-content:flex-start;margin-bottom:16px;flex-wrap:wrap;
-  }
-  .langues span{
-    background:var(--marsa-bleu);color:#fff;font-weight:700;font-size:13px;
-    padding:6px 14px;border-radius:999px;
-  }
-  .hero h1{font-size:clamp(34px,5vw,52px);color:var(--caramel-fonce);margin-bottom:6px;}
-  .hero .baseline{font-size:18px;color:var(--marsa-bleu-fonce);font-weight:700;margin-bottom:22px;}
-  .inscription-banner{
-    background:var(--marsa-bleu);color:#fff;border-radius:var(--radius);
-    padding:22px 22px;max-width:420px;
-  }
-  .inscription-banner .titre{font-family:'Fredoka';font-weight:600;font-size:20px;}
-  .inscription-banner .annee{font-family:'Fredoka';font-weight:700;font-size:25px;margin:4px 0;}
-  .inscription-banner .detail{font-size:14px;color:#DCEBF6;}
-  @media (max-width:640px){
-    .hero-inner{grid-template-columns:1fr;}
-    .hero-bear{max-width:180px;justify-self:center;}
-    .hero-texte{text-align:center;padding:16px 0 36px;}
-    .hero .langues{justify-content:center;}
-    .inscription-banner{margin:0 auto;}
+  :root {
+    --primary: #1B6CA8;          /* Bleu Marsa moderne */
+    --primary-dark: #0F4D80;
+    --accent: #D9824B;           /* Terracotta / Caramel doux */
+    --accent-light: #F4EAD8;
+    --bg-overlay: rgba(255, 252, 247, 0.88); /* Effet translucide moderne */
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --text-main: #2D251E;
+    --text-muted: #665A4E;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 15px 35px rgba(27, 108, 168, 0.12);
   }
 
-  /* GALERIE - notre espace */
-  .galerie{
-    background:var(--marsa-ciel);
-  }
-  .galerie-photo{
-    width:100%;border-radius:var(--radius);display:block;
-    border:4px solid var(--creme-carte);box-shadow:0 8px 20px rgba(15,77,128,0.15);
-  }
-  .galerie-legende{
-    text-align:center;font-size:14px;color:var(--marsa-bleu-fonce);font-weight:700;margin-top:14px;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+    
+    /* Arrière-plan unique en plein écran fixe */
+    background-image: linear-gradient(rgba(255, 252, 247, 0.3), rgba(255, 252, 247, 0.3)), url("images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
   }
 
-  section{padding:48px 24px;}
-  .section-head{text-align:center;margin-bottom:36px;}
-  .section-head h2{font-size:28px;color:var(--caramel-fonce);}
-  .section-head p{color:var(--encre-douce);margin-top:6px;}
+  h1, h2, h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+  }
 
-  /* TABLEAU DE LA SEMAINE */
-  .board{
-    background:var(--caramel);
-    border-radius:24px;
-    padding:40px 24px;
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px;
   }
-  .board .section-head h2, .board .section-head p{color:#fff;}
-  .pin-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:20px;max-width:960px;margin:0 auto;
-  }
-  .pin-card{
-    background:var(--creme-carte);
-    border-radius:12px;
-    padding:22px 16px 18px;
-    position:relative;
-    box-shadow:0 6px 14px rgba(0,0,0,0.15);
-    border-top:4px solid var(--marsa-bleu);
-  }
-  .pin-card .jour{
-    font-family:'Fredoka';font-weight:600;font-size:16px;color:var(--caramel-fonce);
-    margin-bottom:8px;
-  }
-  .pin-card .activite{font-size:14px;color:var(--encre);font-weight:700;}
-  .pin-card .detail{font-size:13px;color:var(--encre-douce);margin-top:4px;}
 
-  /* HORAIRES */
-  .horaires-table{
-    width:100%;border-collapse:collapse;background:var(--creme-carte);
-    border-radius:var(--radius);overflow:hidden;border:2px solid #E8D6B0;
+  /* HEADER & NAVIGATION */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(27, 108, 168, 0.1);
   }
-  .horaires-table th,.horaires-table td{
-    padding:14px 18px;text-align:left;font-size:15px;
-  }
-  .horaires-table th{
-    background:var(--marsa-bleu);color:#fff;font-family:'Fredoka';font-weight:500;
-  }
-  .horaires-table tr:nth-child(even){background:var(--creme);}
 
-  /* INFOS PRATIQUES */
-  .infos-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1040px;
+    margin: 0 auto;
   }
-  .info-card{background:var(--creme-carte);border-radius:var(--radius);padding:22px;border:2px solid #E8D6B0;}
-  .info-card .icone{
-    width:38px;height:38px;border-radius:10px;background:var(--marsa-bleu);
-    display:flex;align-items:center;justify-content:center;color:#fff;
-    font-family:'Fredoka';font-weight:700;margin-bottom:12px;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
   }
-  .info-card h3{font-size:16px;color:var(--caramel-fonce);margin-bottom:6px;}
-  .info-card p{font-size:14px;color:var(--encre-douce);}
+
+  .logo-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #FFF;
+    border: 2px solid var(--accent);
+    box-shadow: 0 4px 10px rgba(217, 130, 75, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .logo:hover .logo-badge {
+    transform: scale(1.08) rotate(-5deg);
+  }
+
+  .logo-badge img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+  }
+
+  .logo-text {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-wrap {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  nav {
+    display: flex;
+    gap: 24px;
+  }
+
+  nav a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  nav a:hover {
+    color: var(--primary);
+  }
+
+  #lang-toggle {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(27, 108, 168, 0.2);
+    transition: all 0.2s ease;
+  }
+
+  #lang-toggle:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+  }
+
+  /* MAIN CONTENT AREA */
+  .main-container {
+    background: var(--bg-overlay);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    margin: 32px auto;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    overflow: hidden;
+  }
+
+  /* HERO SECTION */
+  .hero {
+    padding: 60px 32px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    align-items: center;
+    gap: 40px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(244, 234, 216, 0.4) 100%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .hero-bear {
+    width: 100%;
+    max-width: 240px;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.08));
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .hero-texte .langues {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .langues span {
+    background: rgba(27, 108, 168, 0.08);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 4vw, 48px);
+    color: var(--accent);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .hero .baseline {
+    font-size: 18px;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .inscription-banner {
+    background: var(--primary);
+    color: #fff;
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    display: inline-block;
+    box-shadow: 0 8px 20px rgba(27, 108, 168, 0.25);
+  }
+
+  .inscription-banner .titre {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 18px;
+    opacity: 0.95;
+  }
+
+  .inscription-banner .annee {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    margin: 2px 0;
+  }
+
+  .inscription-banner .detail {
+    font-size: 13px;
+    opacity: 0.85;
+  }
+
+  /* SECTIONS COMMUNAITY */
+  section {
+    padding: 56px 32px;
+  }
+
+  .section-head {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 40px;
+  }
+
+  .section-head h2 {
+    font-size: 30px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .section-head p {
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+
+  /* GALERIE */
+  .galerie-photo {
+    width: 100%;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow);
+    border: 4px solid #FFF;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .galerie-photo:hover {
+    transform: scale(1.01);
+  }
+
+  .galerie-legende {
+    text-align: center;
+    font-size: 14px;
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin-top: 16px;
+  }
+
+  /* PROGRAMME (GRID CARDS) */
+  .board {
+    background: rgba(244, 234, 216, 0.4);
+    border-radius: var(--radius-md);
+    margin: 0 32px;
+  }
+
+  .pin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 16px;
+  }
+
+  .pin-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    padding: 20px 16px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--primary);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .pin-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .pin-card .jour {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 16px;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .pin-card .activite {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-main);
+  }
+
+  .pin-card .detail {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  /* HORAIRES TABLE */
+  .horaires-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+
+  .horaires-table th, .horaires-table td {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .horaires-table th {
+    background: var(--primary);
+    color: #fff;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 500;
+  }
+
+  .horaires-table tr:not(:last-child) td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  /* INFOS GRID */
+  .infos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .info-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: transform 0.2s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .info-card .icone {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(27, 108, 168, 0.1);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .info-card h3 {
+    font-size: 16px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .info-card p {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
 
   /* FOOTER */
-  footer{
-    background:var(--marsa-bleu-fonce);color:#fff;padding:36px 24px;text-align:center;
+  footer {
+    background: var(--primary-dark);
+    color: #fff;
+    padding: 48px 32px 32px;
+    text-align: center;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   }
-  footer h3{font-family:'Fredoka';font-size:22px;margin-bottom:4px;}
-  footer .sous-titre{color:#B9D6EA;font-size:14px;margin-bottom:18px;}
-  .contact-lignes{display:flex;flex-direction:column;gap:8px;align-items:center;}
-  footer p{color:#DCEBF6;font-size:15px;margin:0;}
-  footer .note{font-size:13px;color:#A9C8DD;font-style:italic;}
-  footer a{text-decoration:underline;}
-  .maj{font-size:12px;color:var(--encre-douce);text-align:center;padding:16px 24px 24px;}
+
+  footer h3 {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+
+  footer .sous-titre {
+    color: #B9D6EA;
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .contact-lignes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  footer p {
+    color: #DCEBF6;
+    font-size: 14px;
+  }
+
+  footer .note {
+    font-size: 13px;
+    color: #A9C8DD;
+    font-style: italic;
+  }
+
+  .maj {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .hero-bear {
+      margin: 0 auto;
+      max-width: 180px;
+    }
+    .hero-texte .langues {
+      justify-content: center;
+    }
+    .board {
+      margin: 0;
+    }
+    section {
+      padding: 40px 20px;
+    }
+    nav {
+      display: none; /* Simplification mobile */
+    }
+  }
 </style>
 </head>
 <body>
 
 <header>
   <div class="header-inner">
-    <div class="logo">
-      <div class="logo-badge"><img src="images/nounours.png" alt="Nounours de TeddYEars"></div>
+    <a href="#" class="logo">
+      <div class="logo-badge">
+        <img src="images/nounours.png" alt="Nounours de TeddYEars">
+      </div>
       <div class="logo-text">TeddYEars</div>
-    </div>
+    </a>
     <div class="nav-wrap">
       <nav>
         <a href="#programme" data-fr="Programme" data-en="Weekly plan">Programme</a>
@@ -213,143 +500,148 @@
   </div>
 </header>
 
-<div class="hero">
-  <div class="hero-inner">
-    <img class="hero-bear" src="images/nounours.png" alt="Nounours de TeddYEars">
-    <div class="hero-texte">
-      <div class="langues">
-        <span>Français</span><span>English</span><span>العربية</span>
-      </div>
-      <h1>TeddYEars</h1>
-      <p class="baseline" data-fr="Jardin d'enfants trilingue — La Marsa" data-en="Trilingual kindergarten — La Marsa">Jardin d'enfants trilingue — La Marsa</p>
-      <div class="inscription-banner">
-        <div class="titre" data-fr="Inscriptions ouvertes" data-en="Enrollment now open">Inscriptions ouvertes</div>
-        <div class="annee">2026 – 2027</div>
-        <div class="detail" data-fr="À partir du 20 août — Âges 2,5 à 6 ans" data-en="Starting August 20 — Ages 2.5 to 6">À partir du 20 août — Âges 2,5 à 6 ans</div>
+<div class="wrap">
+  <div class="main-container">
+
+    <!-- HERO -->
+    <div class="hero">
+      <img class="hero-bear" src="images/nounours.png" alt="Nounours de TeddYEars">
+      <div class="hero-texte">
+        <div class="langues">
+          <span>Français</span><span>English</span><span>العربية</span>
+        </div>
+        <h1>TeddYEars</h1>
+        <p class="baseline" data-fr="Jardin d'enfants trilingue — La Marsa" data-en="Trilingual kindergarten — La Marsa">Jardin d'enfants trilingue — La Marsa</p>
+        <div class="inscription-banner">
+          <div class="titre" data-fr="Inscriptions ouvertes" data-en="Enrollment now open">Inscriptions ouvertes</div>
+          <div class="annee">2026 – 2027</div>
+          <div class="detail" data-fr="À partir du 20 août — Âges 2,5 à 6 ans" data-en="Starting August 20 — Ages 2.5 to 6">À partir du 20 août — Âges 2,5 à 6 ans</div>
+        </div>
       </div>
     </div>
+
+    <!-- NOTRE ESPACE -->
+    <section class="galerie">
+      <div class="section-head">
+        <h2 data-fr="Notre espace" data-en="Our space">Notre espace</h2>
+        <p data-fr="Une salle pensée pour l'éveil et le jeu" data-en="A room designed for discovery and play">Une salle pensée pour l'éveil et le jeu</p>
+      </div>
+      <img class="galerie-photo" src="images/salle-de-classe.jpg" alt="Salle d'activités de TeddYEars, tables et chaises en bois, coin lecture et jeux">
+      <p class="galerie-legende" data-fr="La salle d'activités — ateliers, lecture et jeux" data-en="The activity room — workshops, reading and play">La salle d'activités — ateliers, lecture et jeux</p>
+    </section>
+
+    <!-- PROGRAMME DE LA SEMAINE -->
+    <section id="programme" class="board">
+      <div class="section-head">
+        <h2 data-fr="Le programme de la semaine" data-en="This week's plan">Le programme de la semaine</h2>
+        <p data-fr="Activités trilingues, épinglées comme à l'accueil" data-en="Trilingual activities, pinned up just like at the entrance">Activités trilingues, épinglées comme à l'accueil</p>
+      </div>
+      <div class="pin-grid">
+        <div class="pin-card">
+          <div class="jour" data-fr="Lundi" data-en="Monday">Lundi</div>
+          <div class="activite" data-fr="Peinture et motricité" data-en="Painting and motor skills">Peinture et motricité</div>
+          <div class="detail" data-fr="Atelier peinture le matin, jeux extérieurs l'après-midi" data-en="Painting workshop in the morning, outdoor play in the afternoon">Atelier peinture le matin, jeux extérieurs l'après-midi</div>
+        </div>
+        <div class="pin-card">
+          <div class="jour" data-fr="Mardi" data-en="Tuesday">Mardi</div>
+          <div class="activite" data-fr="English storytime" data-en="English storytime">English storytime</div>
+          <div class="detail" data-fr="Comptines et lecture en anglais" data-en="Nursery rhymes and reading in English">Comptines et lecture en anglais</div>
+        </div>
+        <div class="pin-card">
+          <div class="jour" data-fr="Mercredi" data-en="Wednesday">Mercredi</div>
+          <div class="activite" data-fr="Sortie jardin" data-en="Garden outing">Sortie jardin</div>
+          <div class="detail" data-fr="Prévoir une tenue adaptée à la météo" data-en="Please bring weather-appropriate clothing">Prévoir une tenue adaptée à la météo</div>
+        </div>
+        <div class="pin-card">
+          <div class="jour" data-fr="Jeudi" data-en="Thursday">Jeudi</div>
+          <div class="activite">اللغة العربية واللعب</div>
+          <div class="detail" data-fr="Éveil à la langue arabe par le jeu" data-en="Introduction to Arabic through play">Éveil à la langue arabe par le jeu</div>
+        </div>
+        <div class="pin-card">
+          <div class="jour" data-fr="Vendredi" data-en="Friday">Vendredi</div>
+          <div class="activite" data-fr="Musique et anniversaires" data-en="Music and birthdays">Musique et anniversaires</div>
+          <div class="detail" data-fr="Atelier musical, goûter partagé si anniversaire" data-en="Music workshop, shared snack for birthdays">Atelier musical, goûter partagé si anniversaire</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HORAIRES -->
+    <section id="horaires">
+      <div class="section-head">
+        <h2 data-fr="Horaires d'ouverture" data-en="Opening hours">Horaires d'ouverture</h2>
+      </div>
+      <table class="horaires-table">
+        <thead>
+          <tr>
+            <th data-fr="Jour" data-en="Day">Jour</th>
+            <th data-fr="Accueil du matin" data-en="Morning drop-off">Accueil du matin</th>
+            <th data-fr="Fermeture" data-en="Closing">Fermeture</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-fr="Lundi – Vendredi" data-en="Monday – Friday">Lundi – Vendredi</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td data-fr="Samedi" data-en="Saturday">Samedi</td>
+            <td data-fr="Fermé" data-en="Closed">Fermé</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td data-fr="Dimanche et jours fériés" data-en="Sunday and public holidays">Dimanche et jours fériés</td>
+            <td data-fr="Fermé" data-en="Closed">Fermé</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- INFOS PRATIQUES -->
+    <section id="infos">
+      <div class="section-head">
+        <h2 data-fr="Infos pratiques" data-en="Good to know">Infos pratiques</h2>
+      </div>
+      <div class="infos-grid">
+        <div class="info-card">
+          <div class="icone">✓</div>
+          <h3 data-fr="À apporter" data-en="What to bring">À apporter</h3>
+          <p data-fr="Une tenue de rechange, des chaussons et un doudou si besoin pour la sieste." data-en="A change of clothes, indoor shoes and a comfort toy if needed for nap time.">Une tenue de rechange, des chaussons et un doudou si besoin pour la sieste.</p>
+        </div>
+        <div class="info-card">
+          <div class="icone">✓</div>
+          <h3 data-fr="Repas" data-en="Meals">Repas</h3>
+          <p data-fr="Repas préparés sur place. Merci de signaler toute allergie à l'inscription." data-en="Meals are prepared on-site. Please let us know about any allergies at enrollment.">Repas préparés sur place. Merci de signaler toute allergie à l'inscription.</p>
+        </div>
+        <div class="info-card">
+          <div class="icone">✓</div>
+          <h3 data-fr="Retards et absences" data-en="Delays and absences">Retards et absences</h3>
+          <p data-fr="Merci de prévenir avant 9h en cas d'absence ou de retard le matin." data-en="Please let us know before 9am in case of a morning absence or delay.">Merci de prévenir avant 9h en cas d'absence ou de retard le matin.</p>
+        </div>
+        <div class="info-card">
+          <div class="icone">✓</div>
+          <h3 data-fr="Fermetures" data-en="Closures">Fermetures</h3>
+          <p data-fr="Les dates de fermeture annuelle seront communiquées ici en amont." data-en="Annual closure dates will be shared here in advance.">Les dates de fermeture annuelle seront communiquées ici en amont.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+      <h3>TeddYEars</h3>
+      <p class="sous-titre" data-fr="Jardin d'enfants trilingue" data-en="Trilingual kindergarten">Jardin d'enfants trilingue</p>
+      <div class="contact-lignes">
+        <p>☎ +216 56 225 959</p>
+        <p>✉ preschool.office2@gmail.com</p>
+        <p data-fr="⌂ 8, rue Dr Sadok Mellouli — Marsa Ville" data-en="⌂ 8, Rue Dr Sadok Mellouli — Marsa Ville">⌂ 8, rue Dr Sadok Mellouli — Marsa Ville</p>
+        <p class="note" data-fr="(En face de Topnet et du Love-Matic)" data-en="(Opposite Topnet and Love-Matic)">(En face de Topnet et du Love-Matic)</p>
+      </div>
+    </footer>
+
   </div>
 </div>
 
-<section class="galerie">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 data-fr="Notre espace" data-en="Our space">Notre espace</h2>
-      <p data-fr="Une salle pensée pour l'éveil et le jeu" data-en="A room designed for discovery and play">Une salle pensée pour l'éveil et le jeu</p>
-    </div>
-    <img class="galerie-photo" src="images/salle-de-classe.jpg" alt="Salle d'activités de TeddYEars, tables et chaises en bois, coin lecture et jeux">
-    <p class="galerie-legende" data-fr="La salle d'activités — ateliers, lecture et jeux" data-en="The activity room — workshops, reading and play">La salle d'activités — ateliers, lecture et jeux</p>
-  </div>
-</section>
-
-<section id="programme" class="board">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 data-fr="Le programme de la semaine" data-en="This week's plan">Le programme de la semaine</h2>
-      <p data-fr="Activités trilingues, épinglées comme à l'accueil" data-en="Trilingual activities, pinned up just like at the entrance">Activités trilingues, épinglées comme à l'accueil</p>
-    </div>
-    <div class="pin-grid">
-      <div class="pin-card">
-        <div class="jour" data-fr="Lundi" data-en="Monday">Lundi</div>
-        <div class="activite" data-fr="Peinture et motricité" data-en="Painting and motor skills">Peinture et motricité</div>
-        <div class="detail" data-fr="Atelier peinture le matin, jeux extérieurs l'après-midi" data-en="Painting workshop in the morning, outdoor play in the afternoon">Atelier peinture le matin, jeux extérieurs l'après-midi</div>
-      </div>
-      <div class="pin-card">
-        <div class="jour" data-fr="Mardi" data-en="Tuesday">Mardi</div>
-        <div class="activite" data-fr="English storytime" data-en="English storytime">English storytime</div>
-        <div class="detail" data-fr="Comptines et lecture en anglais" data-en="Nursery rhymes and reading in English">Comptines et lecture en anglais</div>
-      </div>
-      <div class="pin-card">
-        <div class="jour" data-fr="Mercredi" data-en="Wednesday">Mercredi</div>
-        <div class="activite" data-fr="Sortie jardin" data-en="Garden outing">Sortie jardin</div>
-        <div class="detail" data-fr="Prévoir une tenue adaptée à la météo" data-en="Please bring weather-appropriate clothing">Prévoir une tenue adaptée à la météo</div>
-      </div>
-      <div class="pin-card">
-        <div class="jour" data-fr="Jeudi" data-en="Thursday">Jeudi</div>
-        <div class="activite">اللغة العربية واللعب</div>
-        <div class="detail" data-fr="Éveil à la langue arabe par le jeu" data-en="Introduction to Arabic through play">Éveil à la langue arabe par le jeu</div>
-      </div>
-      <div class="pin-card">
-        <div class="jour" data-fr="Vendredi" data-en="Friday">Vendredi</div>
-        <div class="activite" data-fr="Musique et anniversaires" data-en="Music and birthdays">Musique et anniversaires</div>
-        <div class="detail" data-fr="Atelier musical, goûter partagé si anniversaire" data-en="Music workshop, shared snack for birthdays">Atelier musical, goûter partagé si anniversaire</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="horaires">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 data-fr="Horaires d'ouverture" data-en="Opening hours">Horaires d'ouverture</h2>
-    </div>
-    <table class="horaires-table">
-      <tr>
-        <th data-fr="Jour" data-en="Day">Jour</th>
-        <th data-fr="Accueil du matin" data-en="Morning drop-off">Accueil du matin</th>
-        <th data-fr="Fermeture" data-en="Closing">Fermeture</th>
-      </tr>
-      <tr>
-        <td data-fr="Lundi – Vendredi" data-en="Monday – Friday">Lundi – Vendredi</td>
-        <td>—</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td data-fr="Samedi" data-en="Saturday">Samedi</td>
-        <td data-fr="Fermé" data-en="Closed">Fermé</td>
-        <td>—</td>
-      </tr>
-      <tr>
-        <td data-fr="Dimanche et jours fériés" data-en="Sunday and public holidays">Dimanche et jours fériés</td>
-        <td data-fr="Fermé" data-en="Closed">Fermé</td>
-        <td>—</td>
-      </tr>
-    </table>
-  </div>
-</section>
-
-<section id="infos">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 data-fr="Infos pratiques" data-en="Good to know">Infos pratiques</h2>
-    </div>
-    <div class="infos-grid">
-      <div class="info-card">
-        <div class="icone">✓</div>
-        <h3 data-fr="À apporter" data-en="What to bring">À apporter</h3>
-        <p data-fr="Une tenue de rechange, des chaussons et un doudou si besoin pour la sieste." data-en="A change of clothes, indoor shoes and a comfort toy if needed for nap time.">Une tenue de rechange, des chaussons et un doudou si besoin pour la sieste.</p>
-      </div>
-      <div class="info-card">
-        <div class="icone">✓</div>
-        <h3 data-fr="Repas" data-en="Meals">Repas</h3>
-        <p data-fr="Repas préparés sur place. Merci de signaler toute allergie à l'inscription." data-en="Meals are prepared on-site. Please let us know about any allergies at enrollment.">Repas préparés sur place. Merci de signaler toute allergie à l'inscription.</p>
-      </div>
-      <div class="info-card">
-        <div class="icone">✓</div>
-        <h3 data-fr="Retards et absences" data-en="Delays and absences">Retards et absences</h3>
-        <p data-fr="Merci de prévenir avant 9h en cas d'absence ou de retard le matin." data-en="Please let us know before 9am in case of a morning absence or delay.">Merci de prévenir avant 9h en cas d'absence ou de retard le matin.</p>
-      </div>
-      <div class="info-card">
-        <div class="icone">✓</div>
-        <h3 data-fr="Fermetures" data-en="Closures">Fermetures</h3>
-        <p data-fr="Les dates de fermeture annuelle seront communiquées ici en amont." data-en="Annual closure dates will be shared here in advance.">Les dates de fermeture annuelle seront communiquées ici en amont.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer id="contact">
-  <div class="wrap">
-    <h3>TeddYEars</h3>
-    <p class="sous-titre" data-fr="Jardin d'enfants trilingue" data-en="Trilingual kindergarten">Jardin d'enfants trilingue</p>
-    <div class="contact-lignes">
-      <p>☎ +216 56 225 959</p>
-      <p>✉ preschool.office2@gmail.com</p>
-      <p data-fr="⌂ 8, rue Dr Sadok Mellouli — Marsa Ville" data-en="⌂ 8, Rue Dr Sadok Mellouli — Marsa Ville">⌂ 8, rue Dr Sadok Mellouli — Marsa Ville</p>
-      <p class="note" data-fr="(En face de Topnet et du Love-Matic)" data-en="(Opposite Topnet and Love-Matic)">(En face de Topnet et du Love-Matic)</p>
-    </div>
-  </div>
-</footer>
 <p class="maj" data-fr="Dernière mise à jour : 16 août 2026" data-en="Last updated: August 16, 2026">Dernière mise à jour : 16 août 2026</p>
 
 <script>
