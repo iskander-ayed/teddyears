@@ -50,12 +50,20 @@
     border:3px solid var(--marsa-bleu);
   }
   .logo-text{font-family:'Fredoka';font-weight:700;font-size:22px;color:var(--caramel-fonce);}
+  .nav-wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
   nav{display:flex;gap:20px;flex-wrap:wrap;}
   nav a{
     font-weight:700;font-size:14px;text-decoration:none;color:var(--encre-douce);
     padding:6px 2px;border-bottom:2px solid transparent;
   }
   nav a:hover{border-bottom-color:var(--marsa-bleu);color:var(--marsa-bleu-fonce);}
+  #lang-toggle{
+    font-family:'Fredoka';font-weight:600;font-size:13px;
+    background:var(--marsa-bleu);color:#fff;border:none;
+    padding:8px 16px;border-radius:999px;cursor:pointer;
+    transition:background 0.15s ease;
+  }
+  #lang-toggle:hover{background:var(--marsa-bleu-fonce);}
 
   /* HERO */
   .hero{
@@ -113,7 +121,7 @@
   .section-head h2{font-size:28px;color:var(--caramel-fonce);}
   .section-head p{color:var(--encre-douce);margin-top:6px;}
 
-  /* TABLEAU DE LA SEMAINE - empreintes de patte */
+  /* TABLEAU DE LA SEMAINE */
   .board{
     background:var(--caramel);
     border-radius:24px;
@@ -150,7 +158,7 @@
   }
   .tarif-card.recommande{border-color:var(--marsa-bleu);position:relative;}
   .tarif-card.recommande::after{
-    content:'Le plus choisi';position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    content:attr(data-badge);position:absolute;top:-13px;left:50%;transform:translateX(-50%);
     background:var(--marsa-bleu);color:#fff;font-size:12px;font-weight:700;
     padding:4px 12px;border-radius:999px;
   }
@@ -207,13 +215,16 @@
       <div class="logo-badge">TE</div>
       <div class="logo-text">TeddYEars</div>
     </div>
-    <nav>
-      <a href="#programme">Programme</a>
-      <a href="#tarifs">Tarifs</a>
-      <a href="#horaires">Horaires</a>
-      <a href="#infos">Infos pratiques</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="nav-wrap">
+      <nav>
+        <a href="#programme" data-fr="Programme" data-en="Weekly plan">Programme</a>
+        <a href="#tarifs" data-fr="Tarifs" data-en="Fees">Tarifs</a>
+        <a href="#horaires" data-fr="Horaires" data-en="Hours">Horaires</a>
+        <a href="#infos" data-fr="Infos pratiques" data-en="Good to know">Infos pratiques</a>
+        <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+      </nav>
+      <button id="lang-toggle" type="button" aria-label="Changer de langue / Switch language">EN</button>
+    </div>
   </div>
 </header>
 
@@ -225,11 +236,11 @@
         <span>Français</span><span>English</span><span>العربية</span>
       </div>
       <h1>TeddYEars</h1>
-      <p class="baseline">Jardin d'enfants trilingue — La Marsa</p>
+      <p class="baseline" data-fr="Jardin d'enfants trilingue — La Marsa" data-en="Trilingual kindergarten — La Marsa">Jardin d'enfants trilingue — La Marsa</p>
       <div class="inscription-banner">
-        <div class="titre">Inscriptions ouvertes</div>
+        <div class="titre" data-fr="Inscriptions ouvertes" data-en="Enrollment now open">Inscriptions ouvertes</div>
         <div class="annee">2026 – 2027</div>
-        <div class="detail">À partir du 20 août — Âges 2,5 à 6 ans</div>
+        <div class="detail" data-fr="À partir du 20 août — Âges 2,5 à 6 ans" data-en="Starting August 20 — Ages 2.5 to 6">À partir du 20 août — Âges 2,5 à 6 ans</div>
       </div>
     </div>
   </div>
@@ -238,45 +249,45 @@
 <section class="galerie">
   <div class="wrap">
     <div class="section-head">
-      <h2>Notre espace</h2>
-      <p>Une salle pensée pour l'éveil et le jeu</p>
+      <h2 data-fr="Notre espace" data-en="Our space">Notre espace</h2>
+      <p data-fr="Une salle pensée pour l'éveil et le jeu" data-en="A room designed for discovery and play">Une salle pensée pour l'éveil et le jeu</p>
     </div>
     <img class="galerie-photo" src="images/salle-de-classe.jpg" alt="Salle d'activités de TeddYEars, tables et chaises en bois, coin lecture et jeux">
-    <p class="galerie-legende">La salle d'activités — ateliers, lecture et jeux</p>
+    <p class="galerie-legende" data-fr="La salle d'activités — ateliers, lecture et jeux" data-en="The activity room — workshops, reading and play">La salle d'activités — ateliers, lecture et jeux</p>
   </div>
 </section>
 
 <section id="programme" class="board">
   <div class="wrap">
     <div class="section-head">
-      <h2>Le programme de la semaine</h2>
-      <p>Activités trilingues, épinglées comme à l'accueil</p>
+      <h2 data-fr="Le programme de la semaine" data-en="This week's plan">Le programme de la semaine</h2>
+      <p data-fr="Activités trilingues, épinglées comme à l'accueil" data-en="Trilingual activities, pinned up just like at the entrance">Activités trilingues, épinglées comme à l'accueil</p>
     </div>
     <div class="pin-grid">
       <div class="pin-card">
-        <div class="jour">Lundi</div>
-        <div class="activite">Peinture et motricité</div>
-        <div class="detail">Atelier peinture le matin, jeux extérieurs l'après-midi</div>
+        <div class="jour" data-fr="Lundi" data-en="Monday">Lundi</div>
+        <div class="activite" data-fr="Peinture et motricité" data-en="Painting and motor skills">Peinture et motricité</div>
+        <div class="detail" data-fr="Atelier peinture le matin, jeux extérieurs l'après-midi" data-en="Painting workshop in the morning, outdoor play in the afternoon">Atelier peinture le matin, jeux extérieurs l'après-midi</div>
       </div>
       <div class="pin-card">
-        <div class="jour">Mardi</div>
-        <div class="activite">English storytime</div>
-        <div class="detail">Comptines et lecture en anglais</div>
+        <div class="jour" data-fr="Mardi" data-en="Tuesday">Mardi</div>
+        <div class="activite" data-fr="English storytime" data-en="English storytime">English storytime</div>
+        <div class="detail" data-fr="Comptines et lecture en anglais" data-en="Nursery rhymes and reading in English">Comptines et lecture en anglais</div>
       </div>
       <div class="pin-card">
-        <div class="jour">Mercredi</div>
-        <div class="activite">Sortie jardin</div>
-        <div class="detail">Prévoir une tenue adaptée à la météo</div>
+        <div class="jour" data-fr="Mercredi" data-en="Wednesday">Mercredi</div>
+        <div class="activite" data-fr="Sortie jardin" data-en="Garden outing">Sortie jardin</div>
+        <div class="detail" data-fr="Prévoir une tenue adaptée à la météo" data-en="Please bring weather-appropriate clothing">Prévoir une tenue adaptée à la météo</div>
       </div>
       <div class="pin-card">
-        <div class="jour">Jeudi</div>
+        <div class="jour" data-fr="Jeudi" data-en="Thursday">Jeudi</div>
         <div class="activite">اللغة العربية واللعب</div>
-        <div class="detail">Éveil à la langue arabe par le jeu</div>
+        <div class="detail" data-fr="Éveil à la langue arabe par le jeu" data-en="Introduction to Arabic through play">Éveil à la langue arabe par le jeu</div>
       </div>
       <div class="pin-card">
-        <div class="jour">Vendredi</div>
-        <div class="activite">Musique et anniversaires</div>
-        <div class="detail">Atelier musical, goûter partagé si anniversaire</div>
+        <div class="jour" data-fr="Vendredi" data-en="Friday">Vendredi</div>
+        <div class="activite" data-fr="Musique et anniversaires" data-en="Music and birthdays">Musique et anniversaires</div>
+        <div class="detail" data-fr="Atelier musical, goûter partagé si anniversaire" data-en="Music workshop, shared snack for birthdays">Atelier musical, goûter partagé si anniversaire</div>
       </div>
     </div>
   </div>
@@ -285,35 +296,35 @@
 <section id="tarifs">
   <div class="wrap">
     <div class="section-head">
-      <h2>Nos tarifs</h2>
-      <p>Accueil à la demi-journée, journée ou au mois</p>
+      <h2 data-fr="Nos tarifs" data-en="Our fees">Nos tarifs</h2>
+      <p data-fr="Accueil à la demi-journée, journée ou au mois" data-en="Half-day, full-day or monthly enrollment">Accueil à la demi-journée, journée ou au mois</p>
     </div>
     <div class="tarifs-grid">
       <div class="tarif-card">
-        <h3>Demi-journée</h3>
+        <h3 data-fr="Demi-journée" data-en="Half-day">Demi-journée</h3>
         <div class="prix">— DT</div>
         <ul>
-          <li>Matin ou après-midi</li>
-          <li>Goûter inclus</li>
-          <li>Sans réservation minimum</li>
+          <li data-fr="Matin ou après-midi" data-en="Morning or afternoon">Matin ou après-midi</li>
+          <li data-fr="Goûter inclus" data-en="Snack included">Goûter inclus</li>
+          <li data-fr="Sans réservation minimum" data-en="No minimum booking">Sans réservation minimum</li>
         </ul>
       </div>
-      <div class="tarif-card recommande">
-        <h3>Journée complète</h3>
+      <div class="tarif-card recommande" data-badge="Le plus choisi">
+        <h3 data-fr="Journée complète" data-en="Full day">Journée complète</h3>
         <div class="prix">— DT</div>
         <ul>
-          <li>Horaires complets</li>
-          <li>Repas et goûter inclus</li>
-          <li>Sieste encadrée</li>
+          <li data-fr="Horaires complets" data-en="Full opening hours">Horaires complets</li>
+          <li data-fr="Repas et goûter inclus" data-en="Meals and snack included">Repas et goûter inclus</li>
+          <li data-fr="Sieste encadrée" data-en="Supervised nap time">Sieste encadrée</li>
         </ul>
       </div>
       <div class="tarif-card">
-        <h3>Forfait mensuel</h3>
-        <div class="prix">— DT<span>/mois</span></div>
+        <h3 data-fr="Forfait mensuel" data-en="Monthly plan">Forfait mensuel</h3>
+        <div class="prix">— DT<span data-fr="/mois" data-en="/month">/mois</span></div>
         <ul>
-          <li>5 jours par semaine</li>
-          <li>Tarif dégressif dès le 2e enfant</li>
-          <li>Facturation en début de mois</li>
+          <li data-fr="5 jours par semaine" data-en="5 days a week">5 jours par semaine</li>
+          <li data-fr="Tarif dégressif dès le 2e enfant" data-en="Reduced rate from the 2nd child">Tarif dégressif dès le 2e enfant</li>
+          <li data-fr="Facturation en début de mois" data-en="Billed at the start of the month">Facturation en début de mois</li>
         </ul>
       </div>
     </div>
@@ -323,13 +334,29 @@
 <section id="horaires">
   <div class="wrap">
     <div class="section-head">
-      <h2>Horaires d'ouverture</h2>
+      <h2 data-fr="Horaires d'ouverture" data-en="Opening hours">Horaires d'ouverture</h2>
     </div>
     <table class="horaires-table">
-      <tr><th>Jour</th><th>Accueil du matin</th><th>Fermeture</th></tr>
-      <tr><td>Lundi – Vendredi</td><td>—</td><td>—</td></tr>
-      <tr><td>Samedi</td><td>Fermé</td><td>—</td></tr>
-      <tr><td>Dimanche et jours fériés</td><td>Fermé</td><td>—</td></tr>
+      <tr>
+        <th data-fr="Jour" data-en="Day">Jour</th>
+        <th data-fr="Accueil du matin" data-en="Morning drop-off">Accueil du matin</th>
+        <th data-fr="Fermeture" data-en="Closing">Fermeture</th>
+      </tr>
+      <tr>
+        <td data-fr="Lundi – Vendredi" data-en="Monday – Friday">Lundi – Vendredi</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td data-fr="Samedi" data-en="Saturday">Samedi</td>
+        <td data-fr="Fermé" data-en="Closed">Fermé</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td data-fr="Dimanche et jours fériés" data-en="Sunday and public holidays">Dimanche et jours fériés</td>
+        <td data-fr="Fermé" data-en="Closed">Fermé</td>
+        <td>—</td>
+      </tr>
     </table>
   </div>
 </section>
@@ -337,28 +364,28 @@
 <section id="infos">
   <div class="wrap">
     <div class="section-head">
-      <h2>Infos pratiques</h2>
+      <h2 data-fr="Infos pratiques" data-en="Good to know">Infos pratiques</h2>
     </div>
     <div class="infos-grid">
       <div class="info-card">
         <div class="icone">✓</div>
-        <h3>À apporter</h3>
-        <p>Une tenue de rechange, des chaussons et un doudou si besoin pour la sieste.</p>
+        <h3 data-fr="À apporter" data-en="What to bring">À apporter</h3>
+        <p data-fr="Une tenue de rechange, des chaussons et un doudou si besoin pour la sieste." data-en="A change of clothes, indoor shoes and a comfort toy if needed for nap time.">Une tenue de rechange, des chaussons et un doudou si besoin pour la sieste.</p>
       </div>
       <div class="info-card">
         <div class="icone">✓</div>
-        <h3>Repas</h3>
-        <p>Repas préparés sur place. Merci de signaler toute allergie à l'inscription.</p>
+        <h3 data-fr="Repas" data-en="Meals">Repas</h3>
+        <p data-fr="Repas préparés sur place. Merci de signaler toute allergie à l'inscription." data-en="Meals are prepared on-site. Please let us know about any allergies at enrollment.">Repas préparés sur place. Merci de signaler toute allergie à l'inscription.</p>
       </div>
       <div class="info-card">
         <div class="icone">✓</div>
-        <h3>Retards et absences</h3>
-        <p>Merci de prévenir avant 9h en cas d'absence ou de retard le matin.</p>
+        <h3 data-fr="Retards et absences" data-en="Delays and absences">Retards et absences</h3>
+        <p data-fr="Merci de prévenir avant 9h en cas d'absence ou de retard le matin." data-en="Please let us know before 9am in case of a morning absence or delay.">Merci de prévenir avant 9h en cas d'absence ou de retard le matin.</p>
       </div>
       <div class="info-card">
         <div class="icone">✓</div>
-        <h3>Fermetures</h3>
-        <p>Les dates de fermeture annuelle seront communiquées ici en amont.</p>
+        <h3 data-fr="Fermetures" data-en="Closures">Fermetures</h3>
+        <p data-fr="Les dates de fermeture annuelle seront communiquées ici en amont." data-en="Annual closure dates will be shared here in advance.">Les dates de fermeture annuelle seront communiquées ici en amont.</p>
       </div>
     </div>
   </div>
@@ -367,16 +394,42 @@
 <footer id="contact">
   <div class="wrap">
     <h3>TeddYEars</h3>
-    <p class="sous-titre">Jardin d'enfants trilingue</p>
+    <p class="sous-titre" data-fr="Jardin d'enfants trilingue" data-en="Trilingual kindergarten">Jardin d'enfants trilingue</p>
     <div class="contact-lignes">
       <p>☎ +216 56 225 959</p>
       <p>✉ preschool.office2@gmail.com</p>
-      <p>⌂ 8, rue Dr Sadok Mellouli — Marsa Ville</p>
-      <p class="note">(En face de Topnet et du Love-Matic)</p>
+      <p data-fr="⌂ 8, rue Dr Sadok Mellouli — Marsa Ville" data-en="⌂ 8, Rue Dr Sadok Mellouli — Marsa Ville">⌂ 8, rue Dr Sadok Mellouli — Marsa Ville</p>
+      <p class="note" data-fr="(En face de Topnet et du Love-Matic)" data-en="(Opposite Topnet and Love-Matic)">(En face de Topnet et du Love-Matic)</p>
     </div>
   </div>
 </footer>
-<p class="maj">Dernière mise à jour : 16 août 2026</p>
+<p class="maj" data-fr="Dernière mise à jour : 16 août 2026" data-en="Last updated: August 16, 2026">Dernière mise à jour : 16 août 2026</p>
+
+<script>
+  var titles = {
+    fr: "TeddYEars — Jardin d'enfants trilingue, La Marsa",
+    en: "TeddYEars — Trilingual kindergarten, La Marsa"
+  };
+  var toggleBtn = document.getElementById('lang-toggle');
+
+  function applyLang(lang){
+    document.documentElement.lang = lang;
+    document.title = titles[lang];
+    document.querySelectorAll('[data-fr]').forEach(function(el){
+      var text = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-fr');
+      if(text !== null){ el.textContent = text; }
+    });
+    toggleBtn.textContent = lang === 'fr' ? 'EN' : 'FR';
+    localStorage.setItem('te-lang', lang);
+  }
+
+  toggleBtn.addEventListener('click', function(){
+    var current = document.documentElement.lang === 'en' ? 'en' : 'fr';
+    applyLang(current === 'fr' ? 'en' : 'fr');
+  });
+
+  applyLang(localStorage.getItem('te-lang') || 'fr');
+</script>
 
 </body>
 </html>
