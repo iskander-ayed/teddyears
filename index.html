@@ -24,7 +24,9 @@
   html{scroll-behavior:smooth;}
   body{
     font-family:'Nunito',sans-serif;
-    background:var(--creme);
+    background-color:var(--creme);
+    background-image: url("images/background.jpg");
+    background-repeat:repeat;
     color:var(--encre);
     line-height:1.6;
   }
@@ -45,9 +47,13 @@
   .logo{display:flex;align-items:center;gap:10px;}
   .logo-badge{
     width:46px;height:46px;border-radius:50%;
-    background:var(--caramel);display:flex;align-items:center;justify-content:center;
-    font-family:'Fredoka';font-weight:700;color:#fff;font-size:19px;flex-shrink:0;
+    background:var(--caramel);flex-shrink:0;
     border:3px solid var(--marsa-bleu);
+    overflow:hidden;
+  }
+  .logo-badge img{
+    width:100%;height:100%;object-fit:cover;object-position:30% 20%;
+    display:block;
   }
   .logo-text{font-family:'Fredoka';font-weight:700;font-size:22px;color:var(--caramel-fonce);}
   .nav-wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
@@ -147,27 +153,6 @@
   .pin-card .activite{font-size:14px;color:var(--encre);font-weight:700;}
   .pin-card .detail{font-size:13px;color:var(--encre-douce);margin-top:4px;}
 
-  /* TARIFS */
-  .tarifs-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-  }
-  .tarif-card{
-    background:var(--creme-carte);border:2px solid #E8D6B0;border-radius:var(--radius);
-    padding:26px 22px;text-align:center;
-  }
-  .tarif-card.recommande{border-color:var(--marsa-bleu);position:relative;}
-  .tarif-card.recommande::after{
-    content:attr(data-badge);position:absolute;top:-13px;left:50%;transform:translateX(-50%);
-    background:var(--marsa-bleu);color:#fff;font-size:12px;font-weight:700;
-    padding:4px 12px;border-radius:999px;
-  }
-  .tarif-card h3{font-size:16px;color:var(--caramel-fonce);margin-bottom:10px;}
-  .tarif-card .prix{font-family:'Fredoka';font-size:32px;font-weight:600;color:var(--marsa-bleu-fonce);}
-  .tarif-card .prix span{font-size:14px;color:var(--encre-douce);font-family:'Nunito';font-weight:700;}
-  .tarif-card ul{list-style:none;margin-top:16px;text-align:left;font-size:14px;color:var(--encre-douce);}
-  .tarif-card li{padding:5px 0;border-top:1px solid var(--creme);}
-
   /* HORAIRES */
   .horaires-table{
     width:100%;border-collapse:collapse;background:var(--creme-carte);
@@ -212,13 +197,12 @@
 <header>
   <div class="header-inner">
     <div class="logo">
-      <div class="logo-badge">TE</div>
+      <div class="logo-badge"><img src="images/nounours.png" alt="Nounours de TeddYEars"></div>
       <div class="logo-text">TeddYEars</div>
     </div>
     <div class="nav-wrap">
       <nav>
         <a href="#programme" data-fr="Programme" data-en="Weekly plan">Programme</a>
-        <a href="#tarifs" data-fr="Tarifs" data-en="Fees">Tarifs</a>
         <a href="#horaires" data-fr="Horaires" data-en="Hours">Horaires</a>
         <a href="#infos" data-fr="Infos pratiques" data-en="Good to know">Infos pratiques</a>
         <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
@@ -288,44 +272,6 @@
         <div class="jour" data-fr="Vendredi" data-en="Friday">Vendredi</div>
         <div class="activite" data-fr="Musique et anniversaires" data-en="Music and birthdays">Musique et anniversaires</div>
         <div class="detail" data-fr="Atelier musical, goûter partagé si anniversaire" data-en="Music workshop, shared snack for birthdays">Atelier musical, goûter partagé si anniversaire</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="tarifs">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 data-fr="Nos tarifs" data-en="Our fees">Nos tarifs</h2>
-      <p data-fr="Accueil à la demi-journée, journée ou au mois" data-en="Half-day, full-day or monthly enrollment">Accueil à la demi-journée, journée ou au mois</p>
-    </div>
-    <div class="tarifs-grid">
-      <div class="tarif-card">
-        <h3 data-fr="Demi-journée" data-en="Half-day">Demi-journée</h3>
-        <div class="prix">— DT</div>
-        <ul>
-          <li data-fr="Matin ou après-midi" data-en="Morning or afternoon">Matin ou après-midi</li>
-          <li data-fr="Goûter inclus" data-en="Snack included">Goûter inclus</li>
-          <li data-fr="Sans réservation minimum" data-en="No minimum booking">Sans réservation minimum</li>
-        </ul>
-      </div>
-      <div class="tarif-card recommande" data-badge="Le plus choisi">
-        <h3 data-fr="Journée complète" data-en="Full day">Journée complète</h3>
-        <div class="prix">— DT</div>
-        <ul>
-          <li data-fr="Horaires complets" data-en="Full opening hours">Horaires complets</li>
-          <li data-fr="Repas et goûter inclus" data-en="Meals and snack included">Repas et goûter inclus</li>
-          <li data-fr="Sieste encadrée" data-en="Supervised nap time">Sieste encadrée</li>
-        </ul>
-      </div>
-      <div class="tarif-card">
-        <h3 data-fr="Forfait mensuel" data-en="Monthly plan">Forfait mensuel</h3>
-        <div class="prix">— DT<span data-fr="/mois" data-en="/month">/mois</span></div>
-        <ul>
-          <li data-fr="5 jours par semaine" data-en="5 days a week">5 jours par semaine</li>
-          <li data-fr="Tarif dégressif dès le 2e enfant" data-en="Reduced rate from the 2nd child">Tarif dégressif dès le 2e enfant</li>
-          <li data-fr="Facturation en début de mois" data-en="Billed at the start of the month">Facturation en début de mois</li>
-        </ul>
       </div>
     </div>
   </div>
