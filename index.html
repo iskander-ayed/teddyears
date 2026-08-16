@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeddYEars — Jardin d'enfants trilingue, La Marsa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --caramel:#C48A4F;
+    --caramel-fonce:#8A5E2E;
+    --creme:#F6E9D2;
+    --creme-carte:#FFFCF6;
+    --marsa-bleu:#1B6CA8;
+    --marsa-bleu-fonce:#0F4D80;
+    --marsa-ciel:#EAF3FA;
+    --encre:#3A2E20;
+    --encre-douce:#6B5B45;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Nunito',sans-serif;
+    background:var(--creme);
+    color:var(--encre);
+    line-height:1.6;
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;font-weight:600;}
+  a{color:inherit;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  /* HEADER */
+  header{
+    background:var(--creme-carte);
+    border-bottom:3px solid var(--marsa-bleu);
+    position:sticky;top:0;z-index:10;
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:960px;margin:0 auto;flex-wrap:wrap;gap:12px;
+  }
+  .logo{display:flex;align-items:center;gap:10px;}
+  .logo-badge{
+    width:46px;height:46px;border-radius:50%;
+    background:var(--caramel);display:flex;align-items:center;justify-content:center;
+    font-family:'Fredoka';font-weight:700;color:#fff;font-size:19px;flex-shrink:0;
+    border:3px solid var(--marsa-bleu);
+  }
+  .logo-text{font-family:'Fredoka';font-weight:700;font-size:22px;color:var(--caramel-fonce);}
+  nav{display:flex;gap:20px;flex-wrap:wrap;}
+  nav a{
+    font-weight:700;font-size:14px;text-decoration:none;color:var(--encre-douce);
+    padding:6px 2px;border-bottom:2px solid transparent;
+  }
+  nav a:hover{border-bottom-color:var(--marsa-bleu);color:var(--marsa-bleu-fonce);}
+
+  /* HERO */
+  .hero{
+    padding:0 0 0;text-align:center;
+    background:linear-gradient(180deg, var(--creme) 0%, var(--creme) 70%, var(--marsa-ciel) 100%);
+    overflow:hidden;
+  }
+  .hero-inner{
+    display:grid;grid-template-columns:280px 1fr;align-items:center;gap:12px;
+    max-width:960px;margin:0 auto;padding:0 24px;
+  }
+  .hero-bear{
+    width:100%;max-width:280px;justify-self:start;
+    display:block;
+  }
+  .hero-texte{text-align:left;padding:40px 0;}
+  .hero .langues{
+    display:flex;gap:8px;justify-content:flex-start;margin-bottom:16px;flex-wrap:wrap;
+  }
+  .langues span{
+    background:var(--marsa-bleu);color:#fff;font-weight:700;font-size:13px;
+    padding:6px 14px;border-radius:999px;
+  }
+  .hero h1{font-size:clamp(34px,5vw,52px);color:var(--caramel-fonce);margin-bottom:6px;}
+  .hero .baseline{font-size:18px;color:var(--marsa-bleu-fonce);font-weight:700;margin-bottom:22px;}
+  .inscription-banner{
+    background:var(--marsa-bleu);color:#fff;border-radius:var(--radius);
+    padding:22px 22px;max-width:420px;
+  }
+  .inscription-banner .titre{font-family:'Fredoka';font-weight:600;font-size:20px;}
+  .inscription-banner .annee{font-family:'Fredoka';font-weight:700;font-size:25px;margin:4px 0;}
+  .inscription-banner .detail{font-size:14px;color:#DCEBF6;}
+  @media (max-width:640px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-bear{max-width:180px;justify-self:center;}
+    .hero-texte{text-align:center;padding:16px 0 36px;}
+    .hero .langues{justify-content:center;}
+    .inscription-banner{margin:0 auto;}
+  }
+
+  /* GALERIE - notre espace */
+  .galerie{
+    background:var(--marsa-ciel);
+  }
+  .galerie-photo{
+    width:100%;border-radius:var(--radius);display:block;
+    border:4px solid var(--creme-carte);box-shadow:0 8px 20px rgba(15,77,128,0.15);
+  }
+  .galerie-legende{
+    text-align:center;font-size:14px;color:var(--marsa-bleu-fonce);font-weight:700;margin-top:14px;
+  }
+
+  section{padding:48px 24px;}
+  .section-head{text-align:center;margin-bottom:36px;}
+  .section-head h2{font-size:28px;color:var(--caramel-fonce);}
+  .section-head p{color:var(--encre-douce);margin-top:6px;}
+
+  /* TABLEAU DE LA SEMAINE - empreintes de patte */
+  .board{
+    background:var(--caramel);
+    border-radius:24px;
+    padding:40px 24px;
+  }
+  .board .section-head h2, .board .section-head p{color:#fff;}
+  .pin-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:20px;max-width:960px;margin:0 auto;
+  }
+  .pin-card{
+    background:var(--creme-carte);
+    border-radius:12px;
+    padding:22px 16px 18px;
+    position:relative;
+    box-shadow:0 6px 14px rgba(0,0,0,0.15);
+    border-top:4px solid var(--marsa-bleu);
+  }
+  .pin-card .jour{
+    font-family:'Fredoka';font-weight:600;font-size:16px;color:var(--caramel-fonce);
+    margin-bottom:8px;
+  }
+  .pin-card .activite{font-size:14px;color:var(--encre);font-weight:700;}
+  .pin-card .detail{font-size:13px;color:var(--encre-douce);margin-top:4px;}
+
+  /* TARIFS */
+  .tarifs-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+  }
+  .tarif-card{
+    background:var(--creme-carte);border:2px solid #E8D6B0;border-radius:var(--radius);
+    padding:26px 22px;text-align:center;
+  }
+  .tarif-card.recommande{border-color:var(--marsa-bleu);position:relative;}
+  .tarif-card.recommande::after{
+    content:'Le plus choisi';position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    background:var(--marsa-bleu);color:#fff;font-size:12px;font-weight:700;
+    padding:4px 12px;border-radius:999px;
+  }
+  .tarif-card h3{font-size:16px;color:var(--caramel-fonce);margin-bottom:10px;}
+  .tarif-card .prix{font-family:'Fredoka';font-size:32px;font-weight:600;color:var(--marsa-bleu-fonce);}
+  .tarif-card .prix span{font-size:14px;color:var(--encre-douce);font-family:'Nunito';font-weight:700;}
+  .tarif-card ul{list-style:none;margin-top:16px;text-align:left;font-size:14px;color:var(--encre-douce);}
+  .tarif-card li{padding:5px 0;border-top:1px solid var(--creme);}
+
+  /* HORAIRES */
+  .horaires-table{
+    width:100%;border-collapse:collapse;background:var(--creme-carte);
+    border-radius:var(--radius);overflow:hidden;border:2px solid #E8D6B0;
+  }
+  .horaires-table th,.horaires-table td{
+    padding:14px 18px;text-align:left;font-size:15px;
+  }
+  .horaires-table th{
+    background:var(--marsa-bleu);color:#fff;font-family:'Fredoka';font-weight:500;
+  }
+  .horaires-table tr:nth-child(even){background:var(--creme);}
+
+  /* INFOS PRATIQUES */
+  .infos-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;
+  }
+  .info-card{background:var(--creme-carte);border-radius:var(--radius);padding:22px;border:2px solid #E8D6B0;}
+  .info-card .icone{
+    width:38px;height:38px;border-radius:10px;background:var(--marsa-bleu);
+    display:flex;align-items:center;justify-content:center;color:#fff;
+    font-family:'Fredoka';font-weight:700;margin-bottom:12px;
+  }
+  .info-card h3{font-size:16px;color:var(--caramel-fonce);margin-bottom:6px;}
+  .info-card p{font-size:14px;color:var(--encre-douce);}
+
+  /* FOOTER */
+  footer{
+    background:var(--marsa-bleu-fonce);color:#fff;padding:36px 24px;text-align:center;
+  }
+  footer h3{font-family:'Fredoka';font-size:22px;margin-bottom:4px;}
+  footer .sous-titre{color:#B9D6EA;font-size:14px;margin-bottom:18px;}
+  .contact-lignes{display:flex;flex-direction:column;gap:8px;align-items:center;}
+  footer p{color:#DCEBF6;font-size:15px;margin:0;}
+  footer .note{font-size:13px;color:#A9C8DD;font-style:italic;}
+  footer a{text-decoration:underline;}
+  .maj{font-size:12px;color:var(--encre-douce);text-align:center;padding:16px 24px 24px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-badge">TE</div>
+      <div class="logo-text">TeddYEars</div>
+    </div>
+    <nav>
+      <a href="#programme">Programme</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#horaires">Horaires</a>
+      <a href="#infos">Infos pratiques</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <img class="hero-bear" src="images/nounours.png" alt="Nounours de TeddYEars">
+    <div class="hero-texte">
+      <div class="langues">
+        <span>Français</span><span>English</span><span>العربية</span>
+      </div>
+      <h1>TeddYEars</h1>
+      <p class="baseline">Jardin d'enfants trilingue — La Marsa</p>
+      <div class="inscription-banner">
+        <div class="titre">Inscriptions ouvertes</div>
+        <div class="annee">2026 – 2027</div>
+        <div class="detail">À partir du 20 août — Âges 2,5 à 6 ans</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="galerie">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Notre espace</h2>
+      <p>Une salle pensée pour l'éveil et le jeu</p>
+    </div>
+    <img class="galerie-photo" src="images/salle-de-classe.jpg" alt="Salle d'activités de TeddYEars, tables et chaises en bois, coin lecture et jeux">
+    <p class="galerie-legende">La salle d'activités — ateliers, lecture et jeux</p>
+  </div>
+</section>
+
+<section id="programme" class="board">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Le programme de la semaine</h2>
+      <p>Activités trilingues, épinglées comme à l'accueil</p>
+    </div>
+    <div class="pin-grid">
+      <div class="pin-card">
+        <div class="jour">Lundi</div>
+        <div class="activite">Peinture et motricité</div>
+        <div class="detail">Atelier peinture le matin, jeux extérieurs l'après-midi</div>
+      </div>
+      <div class="pin-card">
+        <div class="jour">Mardi</div>
+        <div class="activite">English storytime</div>
+        <div class="detail">Comptines et lecture en anglais</div>
+      </div>
+      <div class="pin-card">
+        <div class="jour">Mercredi</div>
+        <div class="activite">Sortie jardin</div>
+        <div class="detail">Prévoir une tenue adaptée à la météo</div>
+      </div>
+      <div class="pin-card">
+        <div class="jour">Jeudi</div>
+        <div class="activite">اللغة العربية واللعب</div>
+        <div class="detail">Éveil à la langue arabe par le jeu</div>
+      </div>
+      <div class="pin-card">
+        <div class="jour">Vendredi</div>
+        <div class="activite">Musique et anniversaires</div>
+        <div class="detail">Atelier musical, goûter partagé si anniversaire</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tarifs">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Nos tarifs</h2>
+      <p>Accueil à la demi-journée, journée ou au mois</p>
+    </div>
+    <div class="tarifs-grid">
+      <div class="tarif-card">
+        <h3>Demi-journée</h3>
+        <div class="prix">— DT</div>
+        <ul>
+          <li>Matin ou après-midi</li>
+          <li>Goûter inclus</li>
+          <li>Sans réservation minimum</li>
+        </ul>
+      </div>
+      <div class="tarif-card recommande">
+        <h3>Journée complète</h3>
+        <div class="prix">— DT</div>
+        <ul>
+          <li>Horaires complets</li>
+          <li>Repas et goûter inclus</li>
+          <li>Sieste encadrée</li>
+        </ul>
+      </div>
+      <div class="tarif-card">
+        <h3>Forfait mensuel</h3>
+        <div class="prix">— DT<span>/mois</span></div>
+        <ul>
+          <li>5 jours par semaine</li>
+          <li>Tarif dégressif dès le 2e enfant</li>
+          <li>Facturation en début de mois</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="horaires">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Horaires d'ouverture</h2>
+    </div>
+    <table class="horaires-table">
+      <tr><th>Jour</th><th>Accueil du matin</th><th>Fermeture</th></tr>
+      <tr><td>Lundi – Vendredi</td><td>—</td><td>—</td></tr>
+      <tr><td>Samedi</td><td>Fermé</td><td>—</td></tr>
+      <tr><td>Dimanche et jours fériés</td><td>Fermé</td><td>—</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="infos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Infos pratiques</h2>
+    </div>
+    <div class="infos-grid">
+      <div class="info-card">
+        <div class="icone">✓</div>
+        <h3>À apporter</h3>
+        <p>Une tenue de rechange, des chaussons et un doudou si besoin pour la sieste.</p>
+      </div>
+      <div class="info-card">
+        <div class="icone">✓</div>
+        <h3>Repas</h3>
+        <p>Repas préparés sur place. Merci de signaler toute allergie à l'inscription.</p>
+      </div>
+      <div class="info-card">
+        <div class="icone">✓</div>
+        <h3>Retards et absences</h3>
+        <p>Merci de prévenir avant 9h en cas d'absence ou de retard le matin.</p>
+      </div>
+      <div class="info-card">
+        <div class="icone">✓</div>
+        <h3>Fermetures</h3>
+        <p>Les dates de fermeture annuelle seront communiquées ici en amont.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h3>TeddYEars</h3>
+    <p class="sous-titre">Jardin d'enfants trilingue</p>
+    <div class="contact-lignes">
+      <p>☎ +216 56 225 959</p>
+      <p>✉ preschool.office2@gmail.com</p>
+      <p>⌂ 8, rue Dr Sadok Mellouli — Marsa Ville</p>
+      <p class="note">(En face de Topnet et du Love-Matic)</p>
+    </div>
+  </div>
+</footer>
+<p class="maj">Dernière mise à jour : 16 août 2026</p>
+
+</body>
+</html>
