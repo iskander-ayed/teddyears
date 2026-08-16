@@ -203,6 +203,13 @@
     border-radius: var(--radius-md);
     padding: 16px 24px;
     display: inline-block;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .inscription-banner:hover {
+    transform: translateY(-2px);
+    background: var(--primary-dark);
   }
 
   .inscription-banner .titre { font-family: 'Fredoka', sans-serif; font-size: 18px; }
@@ -371,6 +378,89 @@
   .pin-card .activite { font-size: 14px; font-weight: 700; margin-top: 4px; }
   .pin-card .detail { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
+  /* FORMULAIRE D'INSCRIPTION */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .form-group-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 18px;
+    color: var(--accent);
+    border-bottom: 2px solid rgba(217, 130, 75, 0.2);
+    padding-bottom: 6px;
+    margin-top: 10px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  .form-field input, .form-field textarea {
+    padding: 12px 14px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 14px;
+    background: #FFF;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .form-field input:focus, .form-field textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(27, 108, 168, 0.15);
+  }
+
+  .form-submit-btn {
+    background: var(--primary);
+    color: #FFF;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 10px;
+    align-self: center;
+  }
+
+  .form-submit-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+
+  .form-message {
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+  }
+
+  .form-message.success { color: #2e7d32; }
+  .form-message.error { color: #d32f2f; }
+
   /* HORAIRES TABLE */
   .horaires-table {
     width: 100%;
@@ -469,12 +559,12 @@
     <div class="hero-card">
       <h1>TeddYEars</h1>
       <p class="baseline" data-fr="Jardin d'enfants trilingue — La Marsa" data-en="Trilingual kindergarten — La Marsa">Jardin d'enfants trilingue — La Marsa</p>
-      <div class="inscription-banner">
+      <a href="#inscription" class="inscription-banner">
         <div class="titre" data-fr="Inscriptions ouvertes" data-en="Enrollment now open">Inscriptions ouvertes</div>
         <div class="annee">2026 – 2027</div>
         <div class="detail" data-fr="À partir du 20 août — Âges 2,5 à 6 ans" data-en="Starting August 20 — Ages 2.5 to 6">À partir du 20 août — Âges 2,5 à 6 ans</div>
-      </div>
-      <div class="langues">
+      </a>
+      <div class="langues" style="margin-top: 16px;">
         <span>Français</span><span>English</span><span>العربية</span>
       </div>
     </div>
@@ -541,7 +631,7 @@
             </div>
           </div>
 
-          <!-- Photo 4 -->
+          <!-- Photo 5 -->
           <div class="carousel-card" 
                data-full="images/espaces/atelier-art.jpg" 
                data-desc-fr="Atelier création, peinture et travaux manuels" 
@@ -595,6 +685,78 @@
           <div class="detail" data-fr="Atelier musical, goûter partagé si anniversaire" data-en="Music workshop, shared snack for birthdays">Atelier musical, goûter partagé si anniversaire</div>
         </div>
       </div>
+    </div>
+  </section>
+
+    <!-- FORMULAIRE D'INSCRIPTION -->
+  <section id="inscription" class="reveal">
+    <div class="section-card">
+      <div class="section-head">
+        <h2 data-fr="Formulaire d'inscription 2026 – 2027" data-en="Enrollment Form 2026 – 2027">Formulaire d'inscription 2026 – 2027</h2>
+        <p data-fr="Remplissez ce formulaire pour préinscrire votre enfant. Nous vous recontacterons sous 48h." data-en="Fill out this form to pre-enroll your child. We will contact you within 48 hours.">Remplissez ce formulaire pour préinscrire votre enfant. Nous vous recontacterons sous 48h.</p>
+      </div>
+
+      <form id="form-inscription" action="https://formspree.io/f/preschool.office2@gmail.com" method="POST" class="form-container">
+        
+        <!-- Sujet de l'email automatique -->
+        <input type="hidden" name="_subject" value="Nouvelle préinscription 2026-2027 — TeddYEars">
+
+        <!-- Infos Enfant -->
+        <div class="form-group-title" data-fr="Informations sur l'enfant" data-en="Child Information">Informations sur l'enfant</div>
+        
+        <div class="form-row">
+          <div class="form-field">
+            <label for="child-firstname" data-fr="Prénom de l'enfant *" data-en="Child's First Name *">Prénom de l'enfant *</label>
+            <input type="text" id="child-firstname" name="child_firstname" required placeholder="Ex: Lina">
+          </div>
+          <div class="form-field">
+            <label for="child-lastname" data-fr="Nom de l'enfant *" data-en="Child's Last Name *">Nom de l'enfant *</label>
+            <input type="text" id="child-lastname" name="child_lastname" required placeholder="Ex: Ben Ali">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="child-dob" data-fr="Date de naissance *" data-en="Date of Birth *">Date de naissance *</label>
+            <input type="date" id="child-dob" name="child_dob" required>
+          </div>
+          <div class="form-field">
+            <label for="start-date" data-fr="Date d'entrée souhaitée *" data-en="Desired Start Date *">Date d'entrée souhaitée *</label>
+            <input type="date" id="start-date" name="start_date" value="2026-08-20" required>
+          </div>
+        </div>
+
+        <!-- Infos Parents -->
+        <div class="form-group-title" data-fr="Informations sur les parents / tuteurs" data-en="Parent / Guardian Information">Informations sur les parents / tuteurs</div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="parent-name" data-fr="Nom et prénom du responsable *" data-en="Parent/Guardian Full Name *">Nom et prénom du responsable *</label>
+            <input type="text" id="parent-name" name="parent_name" required placeholder="Ex: Youssef Ben Ali">
+          </div>
+          <div class="form-field">
+            <label for="parent-phone" data-fr="Numéro de téléphone *" data-en="Phone Number *">Numéro de téléphone *</label>
+            <input type="tel" id="parent-phone" name="parent_phone" required placeholder="Ex: +216 20 000 000">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="parent-email" data-fr="Adresse e-mail *" data-en="Email Address *">Adresse e-mail *</label>
+          <input type="email" id="parent-email" name="_replyto" required placeholder="Ex: exemple@email.com">
+        </div>
+
+        <!-- Informations complémentaires -->
+        <div class="form-group-title" data-fr="Informations complémentaires" data-en="Additional Information">Informations complémentaires</div>
+
+        <div class="form-field">
+          <label for="medical-info" data-fr="Allergies, régimes spécifiques ou remarques médicales" data-en="Allergies, dietary requirements or medical notes">Allergies, régimes spécifiques ou remarques médicales</label>
+          <textarea id="medical-info" name="medical_info" rows="3" placeholder="Ex: Allergie aux arachides, régime sans gluten..."></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn" class="form-submit-btn" data-fr="Envoyer la préinscription" data-en="Submit Enrollment">Envoyer la préinscription</button>
+        
+        <div id="form-message" class="form-message"></div>
+      </form>
     </div>
   </section>
 
@@ -761,6 +923,47 @@
     if (e.target === lightbox) {
       lightbox.classList.remove('active');
     }
+  });
+
+   // --- ENVOI ASYNCHRONE DU FORMULAIRE D'INSCRIPTION ---
+  var form = document.getElementById('form-inscription');
+  var formMessage = document.getElementById('form-message');
+  var submitBtn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var lang = document.documentElement.lang || 'fr';
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = lang === 'en' ? "Sending..." : "Envoi en cours...";
+
+    var formData = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
+      if (response.ok) {
+        formMessage.textContent = lang === 'en' 
+          ? "Thank you! Your pre-enrollment request has been submitted successfully." 
+          : "Merci ! Votre demande de préinscription a bien été envoyée.";
+        formMessage.className = "form-message success";
+        formMessage.style.display = "block";
+        form.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    }).catch(function(error) {
+      formMessage.textContent = lang === 'en' 
+        ? "An error occurred. Please try again or contact us directly." 
+        : "Une erreur est survenue. Veuillez réessayer ou nous contacter directement.";
+      formMessage.className = "form-message error";
+      formMessage.style.display = "block";
+    }).finally(function() {
+      submitBtn.disabled = false;
+      submitBtn.textContent = lang === 'en' ? "Submit Enrollment" : "Envoyer la préinscription";
+    });
   });
 </script>
 
